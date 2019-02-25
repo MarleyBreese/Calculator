@@ -15,7 +15,7 @@ package cse360assign2;
 
 public class Calculator
 {
-    private int initialValue;
+    private int total;
     
     /**
      * Class constructor setting the initial value to 0.
@@ -23,19 +23,20 @@ public class Calculator
     
     public Calculator ()
     {
-	initialValue = 0;  // not needed - included for clarity
+	total = 0;  // not needed - included for clarity
     }
     
     /**
      * This method returns the total value of the number calculated. 
      * 
-     * @return 0
-     * 		because there are no methods to modify the initial value yet.
+     * @return total
+     * 		The number after all the operations have been done to it, or just
+     * 	the initial value.
      */
     
     public int getTotal ()
     {
-	return 0;
+	return total;
     }
 	
     /**
@@ -47,7 +48,7 @@ public class Calculator
     
     public void add (int valueToAdd)
     {
-	
+	total = total + valueToAdd;
     }
     
     /**
@@ -59,7 +60,7 @@ public class Calculator
     
     public void subtract (int valueToSub)
     {
-
+	total = total - valueToSub;
     }
     
     /**
@@ -71,7 +72,7 @@ public class Calculator
     
     public void multiply (int valueToMult)
     {
-
+	total = total * valueToMult;
     }
     
     /**
@@ -83,14 +84,14 @@ public class Calculator
     
     public void divide (int valueToDiv)
     {
-	
+	total = total / valueToDiv;
     }
     
     /**
      * This method prints out your use of the calculator, the history.
      * 
      * @return ""
-     * 		because there are no methods to generate a history from yet.
+     * 		because I have not written this method yet.
      */
     
     public String getHistory ()
