@@ -15,22 +15,27 @@ package cse360assign2;
 
 public class Calculator
 {
-    private int total;
+    private int total; // the total that the calculator works on
+    private int methodCount; // this counts the number of times a method is used
+    private String[] methodHistory; // this array is used to document the method history
     
     /**
-     * Class constructor setting the initial value to 0.
+     * Class constructor setting the initial value to 0, the initial count to 0, and creating an array
+     * of 100.
      */
     
     public Calculator ()
     {
-	total = 0;  // not needed - included for clarity
+	total = 0; // not needed - included for clarity
+	methodCount = 0; // not needed - included for clarity
+	methodHistory = new String[100]; // creates an array of 100 that will hold the method history
     }
     
     /**
      * This method returns the total value of the number calculated. 
      * 
      * @return total
-     * 		The number after all the operations have been done to it, or just
+     * 		the number after all the operations have been done to it, or just
      * 	the initial value.
      */
     
@@ -40,7 +45,7 @@ public class Calculator
     }
 	
     /**
-     * This method adds a number to the total
+     * This method adds a number to the total, then adds it to the history.
      * 
      * @param valueToAdd
      * 		the number passed in to add to the total.
@@ -49,10 +54,12 @@ public class Calculator
     public void add (int valueToAdd)
     {
 	total = total + valueToAdd;
+	
+	createHistory("+ " + valueToAdd);
     }
     
     /**
-     * This method subtracts numbers from the total.
+     * This method subtracts numbers from the total, then adds it to the history.
      * 
      * @param valueToSub
      * 		the number passed in to subtract from the total.
@@ -61,10 +68,12 @@ public class Calculator
     public void subtract (int valueToSub)
     {
 	total = total - valueToSub;
+	
+	createHistory("- " + valueToSub);
     }
     
     /**
-     * This method multiplies numbers to the total.
+     * This method multiplies numbers to the total, then adds it to the history.
      * 
      * @param valueToMult
      *		the number passed in to multiply to the total.
@@ -73,11 +82,13 @@ public class Calculator
     public void multiply (int valueToMult)
     {
 	total = total * valueToMult;
+	
+	createHistory("* " + valueToMult);
     }
     
     /**
      * This method divides numbers from the total, if the number passed in is 0,
-     * then it sets the total to 0.
+     * then it sets the total to 0, then adds it to the history.
      * 
      * @param valueToDiv
      * 		the number passed in to divide from the total
@@ -93,17 +104,40 @@ public class Calculator
 	{
 	    total = total / valueToDiv;
 	}
+	
+	createHistory("/ " + valueToDiv);
+    }
+    
+    /**
+     * This method is used to store the history of the use of the calculator.
+     * 
+     * @param valueHistory
+     * 		the string passed in that says what equation and what number was used.
+     */
+    
+    private void createHistory (String valueHistory)
+    {
+	methodHistory[methodCount] = valueHistory;
+	
+	methodCount++;
     }
     
     /**
      * This method prints out your use of the calculator, the history.
      * 
-     * @return ""
-     * 		because I have not written this method yet.
+     * @return history
+     * 		the string output of the history of the use of the calculator.
      */
     
     public String getHistory ()
     {
-	return "";
+	String history = "0 ";
+	
+	for(int index = 0; index < methodCount; index++)
+	{
+	    history += methodHistory[index] + " ";
+	}
+	
+	return history;
     }
 }
