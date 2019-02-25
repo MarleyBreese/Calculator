@@ -76,7 +76,8 @@ public class Calculator
     }
     
     /**
-     * This method divides numbers from the total.
+     * This method divides numbers from the total, if the number passed in is 0,
+     * then it sets the total to 0.
      * 
      * @param valueToDiv
      * 		the number passed in to divide from the total
@@ -84,7 +85,14 @@ public class Calculator
     
     public void divide (int valueToDiv)
     {
-	total = total / valueToDiv;
+	if(valueToDiv == 0)
+	{
+	    total = 0;
+	}
+	else
+	{
+	    total = total / valueToDiv;
+	}
     }
     
     /**
